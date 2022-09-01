@@ -81,13 +81,13 @@ export default function Details() {
               
 
               <div className={s.summaryContainer}>
-                <h2 className={s.summaryTitle}>Cooking Minutes</h2>
+                {/*<h2 className={s.summaryTitle}>Cooking Minutes</h2>
                 <h4>
                   <div
                     className={s.summaryText}
                     dangerouslySetInnerHTML={{ __html: details.cookingMinutes }}
                   />
-                </h4>
+                    </h4>*/}
                 <h2 className={s.summaryTitle}>Summary</h2>
                 <h4>
                   <div
