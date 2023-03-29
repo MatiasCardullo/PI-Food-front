@@ -18,9 +18,11 @@ import {
 const { BASEURL } = process.env
 
 export const getAllRecipesHome = () => (dispatch) => {
+  console.log(BASEURL)
   return fetch(BASEURL + "/recipes")
     .then((response) => response.json())
     .then((json) => {
+      console.log(json);
       dispatch({
         type: GET_ALL_RECIPES_HOME,
         payload: json,
