@@ -15,7 +15,7 @@ import {
   RESET
 } from "./types";
 
-const baseUrl = "https://pifood-mcardullo.herokuapp.com"
+const { baseUrl } = process.env
 
 export const getAllRecipesHome = () => (dispatch) => {
   return fetch(baseUrl + "/recipes")
