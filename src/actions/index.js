@@ -15,11 +15,11 @@ import {
   RESET
 } from "./types";
 
-const { BASEURL } = process.env
+const { REACT_APP_BACKURL } = process.env
 
 export const getAllRecipesHome = () => (dispatch) => {
-  console.log(BASEURL)
-  return fetch(BASEURL + "/recipes")
+  console.log(REACT_APP_BACKURL)
+  return fetch(REACT_APP_BACKURL + "/recipes")
     .then((response) => response.json())
     .then((json) => {
       console.log(json);
@@ -32,7 +32,7 @@ export const getAllRecipesHome = () => (dispatch) => {
 };
 
 export const getRecipeByID = (id) => (dispatch) => {
-  return fetch(BASEURL + "/recipes/" + id)
+  return fetch(REACT_APP_BACKURL + "/recipes/" + id)
     .then((response) => response.json())
     .then((json) => {
       dispatch({
@@ -46,7 +46,7 @@ export const getRecipeByID = (id) => (dispatch) => {
 };
 
 export const getRecipeByName = (name) => (dispatch) => {
-  return fetch(BASEURL + "/recipes?name=" + name)
+  return fetch(REACT_APP_BACKURL + "/recipes?name=" + name)
     .then((response) => response.json())
     .then((json) => {
       dispatch({
@@ -62,7 +62,7 @@ export const getRecipeByName = (name) => (dispatch) => {
 export function getTypesOfDiets() {
   return async (dispatch) => {
     try {
-      const json = await axios.get(BASEURL + "/types");
+      const json = await axios.get(REACT_APP_BACKURL + "/types");
       return dispatch({
         type: GET_TYPES_OF_DIET,
         payload: json.data,
@@ -76,7 +76,7 @@ export function getTypesOfDiets() {
 export function postRecipe(payload) {
   return async (dispatch) => {
     try {
-      const json = await axios.post(BASEURL + "/recipe", payload);
+      const json = await axios.post(REACT_APP_BACKURL + "/recipe", payload);
       return dispatch({
         type: POST_RECIPE,
         payload: json.data,
@@ -121,7 +121,7 @@ export const filterRecipesByDiet = (payload) => {
 
 export const deleteRecipe = (id) => {
   return async function (dispatch) {
-    await axios.delete(BASEURL + "/recipes/" + id);
+    await axios.delete(REACT_APP_BACKURL + "/recipes/" + id);
     return dispatch({
       type: DELETE_RECIPE,
     });
