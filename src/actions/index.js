@@ -15,10 +15,10 @@ import {
   RESET
 } from "./types";
 
-const { baseUrl } = process.env
+const { BASEURL } = process.env
 
 export const getAllRecipesHome = () => (dispatch) => {
-  return fetch(baseUrl + "/recipes")
+  return fetch(BASEURL + "/recipes")
     .then((response) => response.json())
     .then((json) => {
       dispatch({
@@ -30,7 +30,7 @@ export const getAllRecipesHome = () => (dispatch) => {
 };
 
 export const getRecipeByID = (id) => (dispatch) => {
-  return fetch(baseUrl + "/recipes/" + id)
+  return fetch(BASEURL + "/recipes/" + id)
     .then((response) => response.json())
     .then((json) => {
       dispatch({
@@ -44,7 +44,7 @@ export const getRecipeByID = (id) => (dispatch) => {
 };
 
 export const getRecipeByName = (name) => (dispatch) => {
-  return fetch(baseUrl + "/recipes?name=" + name)
+  return fetch(BASEURL + "/recipes?name=" + name)
     .then((response) => response.json())
     .then((json) => {
       dispatch({
@@ -60,7 +60,7 @@ export const getRecipeByName = (name) => (dispatch) => {
 export function getTypesOfDiets() {
   return async (dispatch) => {
     try {
-      const json = await axios.get(baseUrl + "/types");
+      const json = await axios.get(BASEURL + "/types");
       return dispatch({
         type: GET_TYPES_OF_DIET,
         payload: json.data,
@@ -74,7 +74,7 @@ export function getTypesOfDiets() {
 export function postRecipe(payload) {
   return async (dispatch) => {
     try {
-      const json = await axios.post(baseUrl + "/recipe", payload);
+      const json = await axios.post(BASEURL + "/recipe", payload);
       return dispatch({
         type: POST_RECIPE,
         payload: json.data,
@@ -119,7 +119,7 @@ export const filterRecipesByDiet = (payload) => {
 
 export const deleteRecipe = (id) => {
   return async function (dispatch) {
-    await axios.delete(baseUrl + "/recipes/" + id);
+    await axios.delete(BASEURL + "/recipes/" + id);
     return dispatch({
       type: DELETE_RECIPE,
     });
